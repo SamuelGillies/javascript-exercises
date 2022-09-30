@@ -3,27 +3,20 @@ const removeFromArray = function(...args) {
     let inputs = [...args]; 
 
     // place array in one var 
-    let array = inputs.slice(0,1); 
+    let items = inputs[0]; 
 
     // place all other arguments in another var
-    let filter = inputs.slice(1); 
+    let toRemove = inputs.slice(1); 
 
     // create include arrays for storage of filtered values  
-    let include = []; 
+    let finalArray = []; 
 
-    // test each item of array against each item of arguments
-
-    for (let item of array) {               // iterate over array 
-        for (let argument of filter) {   // iterate over arguments
-            if (item != argument) {         // test if array value matches argument value
-                include.push(item);         // if no, add to include array
-            }
-        }
-    }
+    // test each item to see if it is included in toRemove
+    // use of ! means that if the result is false, the item is pushed to finalArray
+    finalArray = items.filter(val => !toRemove.includes(val)); 
 
     // return final list of included items
-    return include;
-
+    return finalArray;
 };
 
 // Do not edit below this line
